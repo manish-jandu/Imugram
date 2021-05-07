@@ -1,21 +1,17 @@
 package com.manishjandu.imguram.feedFragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.manishjandu.imguram.R
 import com.manishjandu.imguram.databinding.FragmentFeedBinding
 
 class FeedFragment : Fragment() {
- 
-    private val viewModel : FeedViewModel by activityViewModels()
+
+    private val viewModel: FeedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +27,10 @@ class FeedFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentFeedBinding.inflate(inflater,container,false)
+        val binding = FragmentFeedBinding.inflate(inflater, container, false)
 
-        viewModel.feed.observe({lifecycle}){
-            Toast.makeText(requireContext(),"Downloaded  ${it.size}",Toast.LENGTH_SHORT).show()
+        viewModel.feed.observe({ lifecycle }) {
+            Toast.makeText(requireContext(), "Downloaded  ${it.size}", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
