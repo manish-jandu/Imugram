@@ -8,16 +8,18 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.manishjandu.imguram.databinding.ActivityMainBinding
 import com.manishjandu.libimgur.ImgurClient
 
 
 class MainActivity : AppCompatActivity() {
-    //private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private val api = ImgurClient.api
     override fun onCreate(savedInstanceState: Bundle?) {
-       // binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
         setupNav()
     }
 
