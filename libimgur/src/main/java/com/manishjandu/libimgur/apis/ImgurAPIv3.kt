@@ -1,9 +1,9 @@
 package com.manishjandu.libimgur.apis
 
-import com.manishjandu.libimgur.Section
+import com.manishjandu.libimgur.params.Section
 import com.manishjandu.libimgur.models.GalleryResponse
+import com.manishjandu.libimgur.models.Tag
 import com.manishjandu.libimgur.models.TagsResponse
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

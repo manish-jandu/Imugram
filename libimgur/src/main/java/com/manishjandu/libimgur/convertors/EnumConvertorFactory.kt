@@ -1,4 +1,4 @@
-package com.manishjandu.libimgur
+package com.manishjandu.libimgur.convertors
 
 import com.squareup.moshi.Json
 import retrofit2.Converter

@@ -1,8 +1,8 @@
 package com.manishjandu.libimgur.apis
 
 import com.manishjandu.libimgur.ImgurClient
-import com.manishjandu.libimgur.Section
-import com.manishjandu.libimgur.models.Image
+import com.manishjandu.libimgur.params.Section
+import com.manishjandu.libimgur.Wrapper
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
@@ -20,8 +20,7 @@ class ImgurAPIv3Tests {
     @Test
     fun getGalleriesWorkingTop()= runBlocking{
         val response = api.getGallery(Section.TOP)
-        val new: Int? = response.body()?.data?.size
-        print(new)
+        print(response.body())
         Assert.assertNotNull(response.body())
     }
 
@@ -29,5 +28,12 @@ class ImgurAPIv3Tests {
     fun getGalleriesWorkingHot()= runBlocking{
         val response = api.getGallery(Section.HOT)
         Assert.assertNotNull(response.body())
+    }
+
+    @Test
+    fun wrapperGalleriesWorkingTop() = runBlocking {
+        val wrapper = Wrapper()
+        val response = wrapper.getTopFeed()
+        Assert.assertNotNull(response)
     }
 }

@@ -1,6 +1,7 @@
 package com.manishjandu.libimgur
 
 import com.manishjandu.libimgur.apis.ImgurAPIv3
+import com.manishjandu.libimgur.convertors.EnumConvertorFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

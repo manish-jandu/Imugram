@@ -1,4 +1,4 @@
-package com.manishjandu.libimgur
+package com.manishjandu.libimgur.params
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

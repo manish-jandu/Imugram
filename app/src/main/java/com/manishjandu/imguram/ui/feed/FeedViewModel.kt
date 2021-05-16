@@ -1,4 +1,4 @@
-package com.manishjandu.imguram.feedFragment
+package com.manishjandu.imguram.ui.feed
 
 import android.util.Log
 import androidx.lifecycle.*

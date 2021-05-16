@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_hot"
-        android:name="com.manishjandu.imguram.feedFragment.FeedFragment"
+        android:name="com.manishjandu.imguram.ui.feed.FeedFragment"
         android:label="@string/nav_title_hot"
         tools:layout="@layout/fragment_feed" >
         <argument
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_top"
-        android:name="com.manishjandu.imguram.feedFragment.FeedFragment"
+        android:name="com.manishjandu.imguram.ui.feed.FeedFragment"
         android:label="@string/nav_title_top"
         tools:layout="@layout/fragment_feed">
         <argument
