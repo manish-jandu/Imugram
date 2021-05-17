@@ -1,4 +1,4 @@
-package com.manishjandu.imguram
+package com.manishjandu.imguram.ui.home
 
 import android.os.Bundle
 import android.util.Log
@@ -8,16 +8,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.Coil
+import coil.request.ImageRequest
+import coil.size.ViewSizeResolver
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.manishjandu.imguram.R
 import com.manishjandu.imguram.databinding.ActivityMainBinding
-import com.manishjandu.imguram.ui.stories.StoriesRecyclerAdapter
-import com.manishjandu.imguram.ui.stories.StoriesViewModel
 
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
-    private val storiesViewModel by viewModels<StoriesViewModel>()
+    private val storiesViewModel by viewModels<HomeViewModel>()
     private val storiesAdapter = StoriesRecyclerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +58,17 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         storiesViewModel.tags.observe(this) {
-            Log.i(TAG,"tags are $it")
-            storiesAdapter.submitList(it)
+            it.forEach {tag ->
+                val request = ImageRequest.Builder(this)
+                    .data("https://i.imgur.com/${tag.backgroundHash}.jpg")
+                    // Optional, but setting a ViewSizeResolver will conserve memory by limiting the size the image should be preloaded into memory at.
+                    .size(resources.getDimensionPixelSize(R.dimen.story_head_image_size))
+                    .build()
+                Coil.imageLoader(this ).enqueue(request)
+
+            }
+
+             storiesAdapter.submitList(it)
         }
     }
 

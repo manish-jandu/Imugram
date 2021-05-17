@@ -1,15 +1,16 @@
-package com.manishjandu.imguram.ui.stories
+package com.manishjandu.imguram.ui.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.manishjandu.imguram.databinding.ListItemStoryHeadBinding
- import com.manishjandu.libimgur.models.Tag
+import com.manishjandu.imguram.ui.story.StoryActivity
+import com.manishjandu.libimgur.models.Tag
 
 class StoriesRecyclerAdapter() :
     ListAdapter<Tag, StoriesRecyclerAdapter.StoriesViewHolder>(StoriesDiffCallback()) {
@@ -28,6 +29,17 @@ class StoriesRecyclerAdapter() :
         val tag = getItem(position)
         holder.binding.tvStoriesHead.text = tag.displayName
         holder.binding.ivStoriesHead.load("https://i.imgur.com/${tag.backgroundHash}.jpg")
+        holder.binding.root.apply {
+            setOnClickListener {
+
+                context.startActivity(
+                    Intent(context, StoryActivity::class.java)
+                        .apply {
+                            putExtra("tag", tag.name)
+                        }
+                )
+            }
+        }
     }
 
     private class StoriesDiffCallback : DiffUtil.ItemCallback<Tag>() {

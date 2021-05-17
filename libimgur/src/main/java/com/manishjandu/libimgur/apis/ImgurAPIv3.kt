@@ -2,8 +2,8 @@ package com.manishjandu.libimgur.apis
 
 import com.manishjandu.libimgur.params.Section
 import com.manishjandu.libimgur.models.GalleryResponse
-import com.manishjandu.libimgur.models.Tag
 import com.manishjandu.libimgur.models.TagsResponse
+import com.scaler.libimgur.models.TagResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,5 +18,10 @@ interface ImgurAPIv3 {
 
     @GET("tags")
     suspend fun getTags(): Response<TagsResponse>
+
+    @GET("gallery/t/{tag}")
+    suspend fun getTagGallery(
+        @Path("tag") tag:String
+    ) : Response<TagResponse>
 
 }

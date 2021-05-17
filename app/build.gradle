@@ -55,6 +55,7 @@ dependencies {
 
     //coil:ImageLoading
     implementation "io.coil-kt:coil:1.2.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 
     // unit test
